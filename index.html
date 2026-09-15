@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Market Lens — 미국 금리와 미국지수의 관계</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/tooltip.css" />
+    <link rel="stylesheet" href="/tickers.css" />
+    <link rel="stylesheet" href="/metrics.css" />
+    <link rel="stylesheet" href="/ui-overrides.css" />
+    <link rel="stylesheet" href="/sort.css" />
+    <link rel="stylesheet" href="/table.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand"><span class="brand-mark">◒</span><span>MARKET LENS</span></div>
+        <div class="side-label">ANALYSIS</div>
+        <div class="side-item active"><span>◈</span> 관계 대시보드</div>
+        <div class="side-item muted"><span>↗</span> 시장 스냅샷 <small>준비중</small></div>
+        <div class="sidebar-bottom"><div class="side-label">DATA STATUS</div><div class="status-card"><span class="dot"></span><div><strong>Demo data mode</strong><p>Supabase 연결 전</p></div></div></div>
+      </aside>
+      <main class="main-content">
+        <header class="topbar"><div class="breadcrumb">ANALYTICS <span>/</span> RELATIONSHIP</div><div class="top-actions"><span class="updated"><span class="dot"></span> 마지막 갱신 2026.06.18</span><button class="icon-button" aria-label="설정">⚙</button></div></header>
+        <section class="hero"><div><p class="eyebrow">MARKET RELATIONSHIP</p><h1>미국 금리와 미국지수의 관계</h1><p class="hero-copy">금리의 움직임이 미국 주식시장에 어떤 신호를 보내는지<br />일별 수익률과 롤링 상관으로 살펴봅니다.</p></div><div class="hero-badge"><span class="pulse"></span><span>DAILY DATA</span><strong>시장 마감 기준</strong></div></section>
+        <section class="control-panel"><div class="control-group wide"><label>비교 기간</label><div class="period-buttons" id="period-buttons"><button data-period="30">1개월</button><button data-period="90" class="selected">3개월</button><button data-period="180">6개월</button><button data-period="365">1년</button><button data-period="1305">5년</button></div></div><div class="control-group ticker-group"><label>그래프에 표시할 티커</label><div class="ticker-buttons" id="ticker-buttons"></div><select id="stock-picker" aria-label="시가총액 상위 100 주식 추가"><option value="">+ 시가총액 상위 100에서 추가</option></select></div><div class="control-group metric-group"><label>표시 기준</label><div class="metric-pill">기간 시작점 = 100 <span>ⓘ</span></div></div></section>
+        <section class="table-card"><div class="table-heading"><div><span class="section-kicker">SELECTED TICKERS</span><h2>선택 종목 성과</h2></div><span class="table-hint">열 제목 클릭 · 오름차순 / 내림차순</span></div><div class="data-table-wrap"><table class="data-table"><thead><tr><th>티커</th><th><button data-sort-key="currentValue">현재값 <span>↕</span></button></th><th><button data-sort-key="returnValue">기간 수익률 <span>↕</span></button></th><th><button data-sort-key="mdd">MDD <span>↕</span></button></th><th><button data-sort-key="normalizedValue">기준값 대비 <span>↕</span></button></th></tr></thead><tbody id="asset-table-body"></tbody></table></div></section>
+        <section class="chart-card"><div class="card-heading"><div><span class="section-kicker">MARKET COMPARISON</span><h2>다중자산 정규화 성과 비교</h2></div><div class="legend" id="chart-legend"></div></div><div class="chart-wrap"><svg id="correlation-chart" viewBox="0 0 900 290" preserveAspectRatio="none" role="img" aria-label="금리, 금시세, 나스닥, S&P 500 비교 차트"></svg><div class="chart-tooltip" id="chart-tooltip" role="status"></div></div><div class="chart-foot"><span id="chart-range">2026.03.20 — 2026.06.18</span><span>차트 위에 마우스를 올리면 날짜별 값 표시</span></div></section>
+        <section class="lower-grid"><div class="insight-card"><div class="card-heading"><div><span class="section-kicker">READING THE DATA</span><h2>지금 읽을 수 있는 것</h2></div><span class="insight-icon">✦</span></div><p id="insight-text">데이터를 불러오는 중입니다.</p><div class="insight-divider"></div><div class="insight-meta"><span>표시 방법</span><strong>기준값 100 정규화</strong></div><div class="insight-meta"><span>주의</span><strong>동일 축 비교용 지표</strong></div></div><div class="market-card"><div class="card-heading"><div><span class="section-kicker">MARKET PULSE</span><h2>오늘의 시장</h2></div><span class="mini-date">06.18</span></div><div id="market-list"></div></div></section>
+        <footer><span>ⓘ 데모 데이터로 표시 중입니다. 실제 Supabase 연결 시 데이터 출처가 표시됩니다.</span><span>Market Lens v0.1</span></footer>
+      </main>
+    </div>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
